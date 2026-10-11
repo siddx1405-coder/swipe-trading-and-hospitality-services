@@ -1,0 +1,10 @@
+{
+  "description": "Capture and store customer details efficiently until completion, streamlining data collection for sales and support teams.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

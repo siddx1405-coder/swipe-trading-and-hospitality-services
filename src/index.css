@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800;900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-arabic: "Tajawal", sans-serif;
+  --font-english: "Manrope", sans-serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: #f5f3ed;
+    color: #0f172a;
+    font-family: "Tajawal", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  * { box-sizing: border-box; }
+  a, button { -webkit-tap-highlight-color: transparent; }
+  button { cursor: pointer; }
+}
+
+@layer components {
+  .font-arabic { font-family: "Tajawal", sans-serif; }
+  .font-english { font-family: "Manrope", sans-serif; }
+  .container-page { @apply mx-auto w-full max-w-[1240px] px-5 sm:px-8; }
+  .section { @apply py-24 sm:py-28; }
+  .brand-mark { @apply relative grid h-11 w-11 rotate-45 place-items-center overflow-hidden rounded-xl border border-amber-300/40 bg-amber-400 text-slate-950 shadow-[0_0_30px_rgba(251,191,36,0.2)]; }
+  .brand-mark::after { content: ""; @apply absolute -bottom-3 -right-3 h-7 w-7 rounded-full bg-emerald-950/20; }
+  .brand-mark span { @apply -rotate-45 text-xl font-black; }
+  .nav-link { @apply relative py-2 text-sm font-bold text-white/70 transition hover:text-white; }
+  .nav-link::after { content: ""; @apply absolute inset-x-0 -bottom-1 h-0.5 origin-center scale-x-0 bg-amber-400 transition-transform; }
+  .nav-link:hover::after { @apply scale-x-100; }
+  .language-button { @apply flex h-10 items-center gap-2 rounded-full border border-white/15 px-4 text-sm font-bold text-white transition hover:border-white/30 hover:bg-white/10; }
+  .header-call { @apply h-10 items-center gap-2 rounded-full bg-amber-400 px-5 text-sm font-extrabold text-slate-950 transition hover:bg-amber-300; }
+  .menu-button { @apply grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white; }
+  .mobile-nav { @apply border-t border-white/10 bg-[#071b18] px-6 py-5; }
+  .mobile-nav a { @apply block border-b border-white/10 py-4 font-bold text-white/80 last:border-0; }
+  .hero { @apply relative min-h-[760px] overflow-hidden bg-[#071b18]; }
+  .hero-image { @apply absolute inset-0 h-full w-full object-cover object-center; }
+  .hero-overlay { @apply absolute inset-0 bg-[linear-gradient(90deg,rgba(4,25,21,0.98)_0%,rgba(4,25,21,0.88)_44%,rgba(4,25,21,0.38)_100%)] rtl:bg-[linear-gradient(270deg,rgba(4,25,21,0.98)_0%,rgba(4,25,21,0.88)_44%,rgba(4,25,21,0.38)_100%)]; }
+  .hero-pattern {
+    @apply absolute inset-0 opacity-20;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(to right, black, transparent 68%);
+  }
+  [dir="rtl"] .hero-pattern { mask-image: linear-gradient(to left, black, transparent 68%); }
+  .eyebrow, .eyebrow-light { @apply flex items-center gap-3 text-sm font-extrabold tracking-[0.08em]; }
+  .eyebrow { @apply text-emerald-800; }
+  .eyebrow::before { content: ""; @apply h-px w-8 bg-amber-500; }
+  .eyebrow-light { @apply text-amber-300; }
+  .button-primary, .button-ghost, .button-dark { @apply inline-flex min-h-14 items-center justify-center gap-3 rounded-full px-7 text-sm font-extrabold transition; }
+  .button-primary { @apply bg-amber-400 text-slate-950 shadow-[0_12px_35px_rgba(251,191,36,0.2)] hover:-translate-y-0.5 hover:bg-amber-300; }
+  .button-ghost { @apply border border-white/25 bg-white/5 text-white backdrop-blur hover:border-white/40 hover:bg-white/10; }
+  .button-dark { @apply bg-[#071b18] text-white shadow-lg hover:-translate-y-0.5 hover:bg-emerald-950; }
+  .hero-badge { @apply absolute bottom-0 left-0 z-20 hidden items-center gap-4 rounded-tr-3xl border-r border-t border-white/10 bg-[#071b18]/95 px-8 py-6 text-white backdrop-blur md:flex rtl:left-auto rtl:right-0 rtl:rounded-none rtl:rounded-tl-3xl rtl:border-l rtl:border-r-0; }
+  .icon-tile { @apply grid h-12 w-12 place-items-center rounded-xl bg-amber-400 text-slate-950; }
+  .section-heading { @apply flex flex-col justify-between gap-6 md:flex-row md:items-end; }
+  .section-heading h2 { @apply mt-4 max-w-2xl text-4xl font-black leading-tight text-slate-950 sm:text-5xl; }
+  .section-heading > p { @apply max-w-md text-base leading-8 text-slate-600; }
+  .service-card { @apply overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_8px_35px_rgba(15,23,42,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(15,23,42,0.1)]; }
+  .service-image-wrap { @apply relative h-52 overflow-hidden bg-slate-100; }
+  .service-image { @apply h-full w-full object-cover transition duration-500 group-hover:scale-105; }
+  .service-number { @apply absolute top-4 rounded-full bg-[#071b18]/90 px-3 py-1 text-xs font-extrabold text-white backdrop-blur ltr:right-4 rtl:left-4; }
+  .service-icon { @apply -mt-12 mb-5 grid h-14 w-14 place-items-center rounded-xl border-4 border-white bg-amber-400 text-slate-950 shadow-lg; }
+  .service-card h3 { @apply text-xl font-black text-slate-950; }
+  .service-card p { @apply mt-3 min-h-14 text-sm leading-7 text-slate-600; }
+  .text-link { @apply mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-emerald-800 transition hover:text-emerald-950; }
+  .project-grid { @apply grid auto-rows-[260px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3; }
+  .project-card { @apply relative overflow-hidden rounded-2xl bg-slate-900; }
+  .project-card img { @apply h-full w-full object-cover transition duration-700 group-hover:scale-105 group-hover:opacity-80; }
+  .project-card figcaption { @apply absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-slate-950/90 to-transparent p-6 pt-20 text-lg font-extrabold text-white; }
+  .project-arrow { @apply grid h-10 w-10 translate-y-2 place-items-center rounded-full bg-amber-400 text-slate-950 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100; }
+  .project-1, .project-4 { @apply sm:row-span-2; }
+  .project-2 { @apply lg:col-span-2; }
+  .about-section { @apply overflow-hidden bg-[#071b18] py-24 sm:py-28; }
+  .about-visual { @apply relative mx-auto min-h-[520px] w-full max-w-xl; }
+  .about-visual > img { @apply absolute inset-y-0 h-full w-[82%] rounded-2xl object-cover ltr:left-0 rtl:right-0; }
+  .about-small-image { @apply absolute bottom-8 h-56 w-44 overflow-hidden rounded-2xl border-8 border-[#071b18] bg-white ltr:right-0 rtl:left-0; }
+  .about-small-image img { @apply h-full w-full object-cover; }
+  .about-stamp { @apply absolute top-8 flex h-32 w-32 flex-col items-center justify-center rounded-full border-4 border-[#071b18] bg-amber-400 text-center text-slate-950 shadow-xl ltr:right-2 rtl:left-2; }
+  .about-stamp span { @apply text-xl font-black tracking-wider; }
+  .about-stamp small { @apply mt-1 max-w-20 text-[0.55rem] font-extrabold leading-3; }
+  .promise { @apply flex items-center gap-3 text-sm font-bold text-white/85; }
+  .promise > span { @apply grid h-7 w-7 shrink-0 place-items-center rounded-full bg-amber-400 text-slate-950; }
+  .stat { @apply flex flex-col; }
+  .stat strong { @apply text-2xl font-black text-amber-400 sm:text-3xl; }
+  .stat span { @apply mt-1 text-xs leading-5 text-white/45; }
+  .cta-strip {
+    @apply bg-amber-400;
+    background-image: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.28), transparent 25%);
+  }
+  .contact-grid { @apply grid gap-4 lg:grid-cols-3; }
+  .contact-card { @apply flex min-h-40 items-center gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,0.04)] transition hover:-translate-y-1 hover:border-amber-300 hover:shadow-lg; }
+  .contact-card > span:nth-child(2) { @apply flex min-w-0 flex-1 flex-col; }
+  .contact-icon { @apply grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-emerald-950 text-amber-400; }
+  .contact-card small { @apply mb-1 text-xs font-bold text-slate-400; }
+  .contact-card strong { @apply font-black text-slate-900; }
+  .contact-card em { @apply mt-2 text-xs not-italic text-emerald-700; }
+  .floating-whatsapp { @apply fixed bottom-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-[0_8px_30px_rgba(37,211,102,0.35)] transition hover:-translate-y-1 hover:scale-105 ltr:right-5 rtl:left-5; }
+}
+
+@media (max-width: 767px) {
+  .hero-overlay { background: linear-gradient(0deg, rgba(4, 25, 21, 0.98) 0%, rgba(4, 25, 21, 0.82) 72%, rgba(4, 25, 21, 0.58) 100%); }
+  .project-1, .project-4 { grid-row: span 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
